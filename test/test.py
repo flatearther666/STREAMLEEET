@@ -51,7 +51,7 @@ st.markdown("""
 st.markdown('<div class="main-title">Group 3 Data Science Activity Part 3</div>', unsafe_allow_html=True)
 
 # Load data
-df = pd.read_csv("STREAMLEEET/test/Electronic_sales_Sep2023-Sep2024.csv")
+df = pd.read_csv("test/Electronic_sales_Sep2023-Sep2024.csv")
 
 # Display dataframe and its basic info in sections
 st.markdown('<div class="plot-section">', unsafe_allow_html=True)
