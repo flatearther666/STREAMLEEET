@@ -8,5 +8,5 @@ Group Members:
 *   ALMANDRES, Villy Joel H.
 *   MACABALES, Carl Emmanuel M. - clivebixby0
 *   MACATANGAY, Robin Jairic T.
-*   PERICO, Frederick Lemuel A.
+*   PERICO, Frederick Lemuel A. - Flperico
 
