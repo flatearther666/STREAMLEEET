@@ -183,3 +183,22 @@ st.write('''* The sales revenue graph showed that 2023-09 was the lowest and 202
 * Between the two highest monthly revenues, 2024-01 and 2024-08, there was a stable period in monthly revenue where sales didn’t have much changes.
 
 * 2023-09 to 2023-12 was the lowest multi-month period in terms of revenue compared to 2024-05 to 2024-08 which were the highest.''')
+
+st.markdown("## :gray[**Tree Map**] - Almandres, Villy Joel H.")
+
+uploaded = files.upload()
+df = pd.read_csv('Electronic_sales_Sep2023-Sep2024.csv')
+
+treemap_data = df.groupby('Product Type').size().reset_index(name = 'Count')
+total_count = treemap_data['Count'].sum()
+treemap_data['Percentage'] = (treemap_data['Count'] / total_count) * 100
+treemap_data['Label'] = treemap_data['Product Type'] + '\n\n' + treemap_data['Percentage'].astype(str) + '%'
+
+
+plt.figure(figsize = (10, 8))
+squarify.plot(sizes = treemap_data['Count'], label = treemap_data['Label'], alpha = 1, color =["blue", "green", "cyan", "turquoise", "lightblue"])
+plt.title('Product Types Treemap')
+plt.axis('off')
+plt.show()
+
+st.write("* Smartphones take the biggest cut when it comes to product types, making up almost 30% of the treemap, which might indicate a preference of consumers on smartphones compared to other categories. Headphones, on the other hand, only make up to 10% of the share, which may mean that consumers are less likely to buy them compared to other electronic devices. Laptops, Smartwatches, and Tablets all share near identical distribution, which may mean that there’s no clear preference between the three on which category is most preferred.*""
