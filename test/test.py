@@ -54,7 +54,7 @@ st.markdown('<div class="main-title">Group 3 Data Science Activity Part 3</div>'
 df = pd.read_csv("test/Electronic_sales_Sep2023-Sep2024.csv")
 
 # Display dataframe and its basic info in sections
-st.markdown('<div class="plot-section"Electronic Sales</div>>', unsafe_allow_html=True)
+st.markdown('<div class="plot-section"Electronic Sales</div>', unsafe_allow_html=True)
 st.write(df)
 st.write(df.info())
 st.write(df.describe())
