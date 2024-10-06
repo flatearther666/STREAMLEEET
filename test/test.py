@@ -152,4 +152,34 @@ plt.show()
 
 st.write("* This code snippet handles a DataFrame df by first using `pd.to_datetime()` to convert the 'Purchase Date' column into a datetime format. The y_axis_column is then set to 'Quantity,' and the data is grouped by 'Purchase Date' with the groupby method being used to total the amounts for each date. Matplotlib is used to build a line graph that plots the grouped data's values (quantities) against its index (dates), with the line color set to red. A title, labeled axes, rotated x-axis labels for easier reading, and a grid for better presentation are added to the customized graph. Finally, `plt.show()` is used to display the graph.")
 
+#Area Chart
+st.markdown("## :gray[**Area Chart**] - Almandres, Villy Joel H.")
+def area_chart(df):
+    df['Purchase Date'] = pd.to_datetime(df['Purchase Date'], errors='coerce')
+    df['Total Price'] = pd.to_numeric(df['Total Price'], errors='coerce')
 
+    df = df.dropna(subset=['Purchase Date', 'Total Price'])
+
+    monthly_sales = df.groupby(df['Purchase Date'].dt.to_period('M'))['Total Price'].sum()
+
+    plt.figure(figsize=(10, 6))
+    plt.fill_between(monthly_sales.index.astype(str), monthly_sales, color="blue", alpha=0.5)
+    plt.plot(monthly_sales.index.astype(str), monthly_sales, color="darkblue", linewidth=2, alpha=0.8)
+    
+    plt.title('Monthly Sales Revenue')
+    plt.xlabel('Month')
+    plt.ylabel('Total Sales Revenue')
+    plt.xticks(rotation=45)
+    plt.ylim(bottom=0, top=10000000) 
+    
+    st.pyplot(plt)
+    
+    plt.clf()
+
+area_chart(df)
+
+st.write('''* The sales revenue graph showed that 2023-09 was the lowest and 2024-08 the highest (in terms of monthly revenue). There was also a dip in total revenue around 2024-09, which had an approximate revenue loss of 16%.
+
+* Between the two highest monthly revenues, 2024-01 and 2024-08, there was a stable period in monthly revenue where sales didn’t have much changes.
+
+* 2023-09 to 2023-12 was the lowest multi-month period in terms of revenue compared to 2024-05 to 2024-08 which were the highest.''')
